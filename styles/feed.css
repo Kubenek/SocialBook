@@ -1,0 +1,82 @@
+@import url('styles/variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.main-content {
+    width: 50%;
+    height: inherit;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    text-align: center;
+    flex-direction: column;
+}
+
+.m-post:hover {
+    transform: scale(1.05);
+}
+
+.m-post {
+    margin-top: 2%;
+    width: 80%;
+    border: 2px solid var(--aux-filler);
+    height: min-content;
+    border-radius: 15px;
+    box-shadow: 8px 10px 12px rgba(0,0,0,0.2);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.m-post > h1 {
+    font-size: 150%;
+    float: left;
+    font-family: "Sofia", cursive;
+    color: var(--aux-filler);
+    margin-bottom: 10px;
+}
+
+.post {
+    margin-top: 4%;
+    width: 80%;
+    border: 2px solid var(--aux-filler);
+    height: min-content;
+    border-radius: 15px;
+    box-shadow: 8px 10px 12px rgba(0,0,0,0.2);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: transform 0.3s ease;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.post:hover {
+    transform: scale(1.05);
+}
+
+.post > h1 {
+    font-size: 150%;
+    float: left;
+    font-family: "Sofia", cursive;
+    color: var(--aux-filler);
+    margin-bottom: 10px;
+}
+
+.post > .post-footer {
+    color: var(--aux-filler);
+}

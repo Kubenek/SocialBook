@@ -1,0 +1,6 @@
+.grn-seperator { 
+    width: 80%;            
+    border: none;           
+    border-top: 2px solid var(--aux-filler);
+    box-sizing: border-box;
+}
