@@ -14,8 +14,15 @@ while($row = $result->fetch_assoc()) {
 }
 
 if(isset($_POST["submit-form"])) {
+
     $login = $_POST['input-name'];
     $password = $_POST['input-password'];
+
+    if($login == "" || $password == "") {
+        echo "Wypełnij wszystkie pola!";
+        die();
+    }
+
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
     $sql = "INSERT INTO `users` (`id`, `login`, `password`) VALUES(NULL, ?, ?)";
 
