@@ -3,8 +3,10 @@
 
 $login = include('scripts/php/fetch_login.php');
 
-?>
+require('UI/cr-modal/modal.php');
 
+?>
+ 
 
 <nav class="sidebar close">
     <header>
@@ -47,7 +49,7 @@ $login = include('scripts/php/fetch_login.php');
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a onclick="openModal()">
                         <i class='bx bx-plus icon' ></i>
                         <span class="text nav-text">Create Post</span>
                     </a>
