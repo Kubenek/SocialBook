@@ -61,16 +61,18 @@ function fetch_login_by_id($id) {
             <?php
                 foreach ($posts as $post) {?>
                     <div class="post">
+                        <?php  
+                            $date = DateTime::createFromFormat('Y-m-d H:i:s', $post['created_at']);
+                            $formattedDate = $date->format('d M Y');
+                            $uName = fetch_login_by_id($post['user_id']);
+                        ?>
+                        <h3><?php echo $uName; ?></h3>
                         <h1><?php echo $post['title'] ?></h1>
                         
                         <p class="content"><?php echo $post['content']; ?></p>
                         <hr class="grn-seperator" style="display: block; width: 100%; margin-bottom: 20px; margin-top: 20px;">
                         <div class="post-footer">
-                            <?php  
-                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $post['created_at']);
-                                $formattedDate = $date->format('d M Y');
-                                $uName = fetch_login_by_id($post['user_id']);
-                            ?>
+                            
                             <p><?php echo "Posted on ".$formattedDate." by ".$uName ?></p>
                             <p><?php echo "Likes: ".$post['likes']?></p>
                         </div>

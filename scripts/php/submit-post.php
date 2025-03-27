@@ -9,8 +9,13 @@ $ssid = session_id();
 
 $login = include('fetch_login.php');
 
-$usql = "SELECT `id` FROM `users` WHERE `login` = '$login'";
-$userId = $conn->query($usql);
+$usql = "SELECT `id` FROM `users` WHERE `login` = ?";
+$stmt = $conn->prepare($usql);
+$stmt->bind_param("s", $login);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$userId = $row['id'];
 
 $sql = "INSERT INTO `posts` (`id`, `title`, `content`, `user_id`) VALUES(NULL, ?, ?, ?)";
 
