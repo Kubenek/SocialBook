@@ -39,6 +39,7 @@ function fetch_login_by_id($id) {
     <link href="styles/basics.css" rel="stylesheet">
     <link href="styles/feed.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
+    <link href="styles/scrollbar.css" rel="stylesheet">
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
     
@@ -49,7 +50,7 @@ function fetch_login_by_id($id) {
     <?php require('UI/navigation/navigation.php'); ?>
 
     <div class="container">
-        <div class="main-content">
+        <div class="main-content scrollbar">
 
             <div class="m-post">
                 <h1>Welcome <?php echo $login?>!</h1>
