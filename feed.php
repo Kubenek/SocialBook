@@ -67,7 +67,16 @@ function fetch_login_by_id($id) {
                             $formattedDate = $date->format('d M Y');
                             $uName = fetch_login_by_id($post['user_id']);
                         ?>
-                        <h3><?php echo $uName; ?></h3>
+                        <div class="top-content">
+                            <img width="30px" height="30px" src="images/gen/user.png">
+                            <h3><?php echo "  ".$uName; ?></h3>
+                            <?php if($uName == $login) { ?>
+                            <button>
+                                <i class='bx bx-trash'></i>
+                            </button>
+                            <?php } ?>
+                        </div>
+                        
                         <h1><?php echo $post['title'] ?></h1>
                         
                         <p class="content"><?php echo $post['content']; ?></p>

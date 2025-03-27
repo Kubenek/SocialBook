@@ -5,8 +5,7 @@
 }
 
 body.dark {
-    --sidebar-color: #E4E9F7;
-    --toggle-color: #E4E9F7;
+    --scrollbar-color: #3a3b3c;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -14,15 +13,15 @@ body.dark {
 }
 
 .scrollbar::-webkit-scrollbar-track {
-    background: var(--sidebar-color);
+    background: var(--scrollbar-color);
     border-radius: 10px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-    background: var(--toggle-color);
+    background: var(--thumb-color);
     border-radius: 10px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--thumb-hover);
 }

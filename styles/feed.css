@@ -90,3 +90,15 @@ body.dark {
 .post > .post-footer {
     color: var(--aux-filler);
 }
+
+.top-content {
+    display: flex;
+    width: 100%;
+}
+
+.top-content > button {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
