@@ -93,8 +93,8 @@ $conn->close();
 
             <div class="promo">
                 <div class="text">
-                    <h2>Welcome to SocialBook!</h2>
-                    <p>Connect, Share and Grow</p>
+                    <h2>Welcome back, Friend!</h2>
+                    <p>Log back in and catch up with everything</p>
                 </div>
                 <div class="splide" id="promoSplide">
                     <div class="splide__track">
