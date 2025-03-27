@@ -91,14 +91,28 @@ body.dark {
     color: var(--aux-filler);
 }
 
-.top-content {
+.top-content, .top-content > form {
     display: flex;
     width: 100%;
 }
 
-.top-content > button {
+.top-content > form > button {
     display: flex;
     align-items: center;
     margin-left: auto;
 }
+
+.post, .m-post {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; 
+    max-width: 100%; 
+}
+
+.content {
+    max-height: 300px; 
+    overflow-y: auto; 
+    width: 100%; 
+}
+
 

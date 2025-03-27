@@ -26,6 +26,26 @@ function fetch_login_by_id($id) {
     return $row["login"];
 }
 
+function delete_post($id) {
+    $conn = new mysqli("localhost", "root", "", "dane");
+
+    $sql = "DELETE FROM `posts` WHERE `posts`.`id` = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+}
+
+if(isset($_POST["d_post"])) {
+
+    $id = $_POST["d_post"];
+
+    delete_post($id);
+    header("Location: feed.php");
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -70,11 +90,16 @@ function fetch_login_by_id($id) {
                         <div class="top-content">
                             <img width="30px" height="30px" src="images/gen/user.png">
                             <h3><?php echo "  ".$uName; ?></h3>
+
                             <?php if($uName == $login) { ?>
-                            <button>
-                                <i class='bx bx-trash'></i>
-                            </button>
+                            <form method="post">
+                                <button name="d_post" value="<?php echo $post['id'] ?>">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </form>
+
                             <?php } ?>
+
                         </div>
                         
                         <h1><?php echo $post['title'] ?></h1>
