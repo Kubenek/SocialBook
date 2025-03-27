@@ -1,7 +1,7 @@
 @import url('styles/variables.css');
 @import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
 
-.container {
+.container { 
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -10,15 +10,25 @@
     text-align: center;
 }
 
+* {
+    transition: all 0.3s ease;
+}
+
+body.dark {
+    --primary-feed-color: #242526;
+    --primary-text-color: #fff;
+}
+
 .main-content {
     width: 50%;
     height: inherit;
-    background-color: #fff;
+    background-color: var(--primary-feed-color);
     display: flex;
     justify-content: flex-start; 
     align-items: center; 
     text-align: center;
     flex-direction: column;
+    color: var(--primary-text-color);
 }
 
 .m-post:hover {

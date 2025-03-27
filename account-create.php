@@ -21,9 +21,14 @@ if(isset($_POST["submit-form"])) {
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $login, $password_hash);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: login.php");
+    if ($stmt->execute()) {
+        // Success
+        header("Location: login.php");
+    } else {
+        // Error
+        echo "Error: " . $stmt->error;
+    }
+    //header("Location: login.php");
 }
 ?>
 
