@@ -15,7 +15,7 @@
 
             <!-- Content Input -->
             <label for="content">Post Content</label>
-            <textarea id="content" name="content" required></textarea>
+            <textarea id="content" name="content" required style="resize: none;"></textarea>
 
             <!-- Submit Button -->
             <button type="submit" name="post-create">Post!</button>
