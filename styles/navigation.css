@@ -279,3 +279,7 @@ body.dark .sidebar li a.active .icon,
 body.dark .sidebar li a.active .text{
     color: var(--text-color);
 }
+
+.sidebar li a:hover {
+    cursor: pointer;
+}
