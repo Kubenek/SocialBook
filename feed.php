@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
             $('.like-button').on('click', function(event) {
             event.preventDefault();
 
-            var post_id = $('button[name="like_post"]').val();
+            var post_id = $(this).val();
             var user_id = <?php echo $cur_id; ?>;
             var like_icon = $(this).find('.like-icon');
 
