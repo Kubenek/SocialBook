@@ -108,8 +108,11 @@ if(isset($_POST["d_post"])) {
                         <hr class="grn-seperator" style="display: block; width: 100%; margin-bottom: 20px; margin-top: 20px;">
                         <div class="post-footer">
                             
-                            <p><?php echo "Posted on ".$formattedDate." by ".$uName ?></p>
-                            <p><?php echo "Likes: ".$post['likes']?></p>
+                            <p>
+                                <i class="hicon icon bx bx-heart" style="margin-right: 0;"></i>
+                                <?php echo $post['likes']?>
+                            </p>
+
                         </div>
                     </div>
                 <?php } ?>
