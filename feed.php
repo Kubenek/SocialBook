@@ -39,57 +39,6 @@ function delete_post($id) {
     $conn->close();
 }
 
-function add_like($post_id, $user_id) {
-    // Connect to the database
-    $conn = new mysqli("localhost", "root", "", "dane");
-
-    $sql = "SELECT * FROM likes WHERE post_id = ? AND user_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $post_id, $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Check if the like already exists
-    if ($result->num_rows > 0) {
-        // User has already liked, so remove the like
-        $delete_sql = "DELETE FROM likes WHERE post_id = ? AND user_id = ?";
-        $delete_stmt = $conn->prepare($delete_sql);
-        $delete_stmt->bind_param("ii", $post_id, $user_id);
-        $delete_stmt->execute();
-
-        // Decrease the like count in the posts table
-        $update_sql = "UPDATE posts SET likes = likes - 1 WHERE id = ?";
-        $update_stmt = $conn->prepare($update_sql);
-        $update_stmt->bind_param("i", $post_id);
-        $update_stmt->execute();
-
-    } else {
-        // User hasn't liked yet, so add the like
-        $insert_sql = "INSERT INTO likes (post_id, user_id) VALUES (?, ?)";
-        $insert_stmt = $conn->prepare($insert_sql);
-        $insert_stmt->bind_param("ii", $post_id, $user_id);
-        $insert_stmt->execute();
-
-        // Increase the like count in the posts table
-        $update_sql = "UPDATE posts SET likes = likes + 1 WHERE id = ?";
-        $update_stmt = $conn->prepare($update_sql);
-        $update_stmt->bind_param("i", $post_id);
-        $update_stmt->execute();
-
-    }
-
-    // Close the connection
-    $conn->close();
-}
-
-if(isset($_POST['like_post'])) {
-
-    $postID = $_POST["like_post"];
-
-    add_like($postID, $cur_id);
-
-}
-
 if(isset($_POST["d_post"])) {
 
     $id = $_POST["d_post"];
@@ -97,6 +46,17 @@ if(isset($_POST["d_post"])) {
     delete_post($id);
     header("Location: feed.php");
 
+}
+
+include "scripts/php/like_post.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
+    $post_id = $_POST['like_post']; 
+    $user_id = $cur_id;
+
+    $response = add_like($post_id, $user_id);
+
+    echo $response; 
 }
 
 ?>
@@ -113,6 +73,8 @@ if(isset($_POST["d_post"])) {
     <link href="styles/feed.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
     <link href="styles/scrollbar.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
     
@@ -131,8 +93,9 @@ if(isset($_POST["d_post"])) {
 
             <hr class="grn-seperator" style="display: block; margin-top: 40px; width: 50%;">
 
+
             <?php
-                foreach ($posts as $post) {?>
+                foreach ($posts as $post) { ?>
                     <div class="post">
                         <?php  
                             $date = DateTime::createFromFormat('Y-m-d H:i:s', $post['created_at']);
@@ -143,21 +106,25 @@ if(isset($_POST["d_post"])) {
                             <img width="30px" height="30px" src="images/gen/user.png">
                             <h3><?php echo "  ".$uName; ?></h3>
 
-                            <form method="post" id="top-buttons-form">
+                            <form id="likeForm">
 
                                 <button name="like_post" value="<?php echo $post['id'] ?>">
                                     <i class="hicon icon bx bx-heart"></i>
                                 </button>
 
+                            </form>
+
                             <?php if($uName == $login) { ?>
 
-                                <button name="d_post" value="<?php echo $post['id'] ?>">
-                                    <i class='bx bx-trash'></i>
-                                </button>
+                                <form method="post">
+
+                                    <button name="d_post" value="<?php echo $post['id'] ?>">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+
+                                </form>
 
                             <?php } ?>
-
-                            </form>
 
                         </div>
                         
@@ -177,6 +144,35 @@ if(isset($_POST["d_post"])) {
 
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#likeForm').on('submit', function(event) {
+            event.preventDefault();
+
+            var post_id = $('button[name="like_post"]').val();
+            var user_id = <?php echo $cur_id; ?>;
+
+            $.ajax({
+                url: 'feed.php',
+                type: 'POST',
+                data: {
+                like_post: post_id,
+                user_id: user_id
+                },
+                success: function(response) {
+                    
+                },
+                error: function(xhr, status, error) {
+                console.error('AJAX Error: ' + status + error);
+                }
+            });
+            });
+        });
+    </script>
+
 
 </body>
 </html>
