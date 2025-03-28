@@ -8,6 +8,8 @@ shuffle($posts);
 
 $login = include("scripts/php/fetch_login.php");
 
+$cur_id = include("scripts/php/fetch_id.php");
+
 $quote = include("scripts/php/fetch_quote.php");
 
 function fetch_login_by_id($id) {
@@ -37,6 +39,57 @@ function delete_post($id) {
     $conn->close();
 }
 
+function add_like($post_id, $user_id) {
+    // Connect to the database
+    $conn = new mysqli("localhost", "root", "", "dane");
+
+    $sql = "SELECT * FROM likes WHERE post_id = ? AND user_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $post_id, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if the like already exists
+    if ($result->num_rows > 0) {
+        // User has already liked, so remove the like
+        $delete_sql = "DELETE FROM likes WHERE post_id = ? AND user_id = ?";
+        $delete_stmt = $conn->prepare($delete_sql);
+        $delete_stmt->bind_param("ii", $post_id, $user_id);
+        $delete_stmt->execute();
+
+        // Decrease the like count in the posts table
+        $update_sql = "UPDATE posts SET likes = likes - 1 WHERE id = ?";
+        $update_stmt = $conn->prepare($update_sql);
+        $update_stmt->bind_param("i", $post_id);
+        $update_stmt->execute();
+
+    } else {
+        // User hasn't liked yet, so add the like
+        $insert_sql = "INSERT INTO likes (post_id, user_id) VALUES (?, ?)";
+        $insert_stmt = $conn->prepare($insert_sql);
+        $insert_stmt->bind_param("ii", $post_id, $user_id);
+        $insert_stmt->execute();
+
+        // Increase the like count in the posts table
+        $update_sql = "UPDATE posts SET likes = likes + 1 WHERE id = ?";
+        $update_stmt = $conn->prepare($update_sql);
+        $update_stmt->bind_param("i", $post_id);
+        $update_stmt->execute();
+
+    }
+
+    // Close the connection
+    $conn->close();
+}
+
+if(isset($_POST['like_post'])) {
+
+    $postID = $_POST["like_post"];
+
+    add_like($postID, $cur_id);
+
+}
+
 if(isset($_POST["d_post"])) {
 
     $id = $_POST["d_post"];
@@ -62,7 +115,6 @@ if(isset($_POST["d_post"])) {
     <link href="styles/scrollbar.css" rel="stylesheet">
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
-    
     
 </head>
 <body>
@@ -91,14 +143,21 @@ if(isset($_POST["d_post"])) {
                             <img width="30px" height="30px" src="images/gen/user.png">
                             <h3><?php echo "  ".$uName; ?></h3>
 
+                            <form method="post" id="top-buttons-form">
+
+                                <button name="like_post" value="<?php echo $post['id'] ?>">
+                                    <i class="hicon icon bx bx-heart"></i>
+                                </button>
+
                             <?php if($uName == $login) { ?>
-                            <form method="post">
+
                                 <button name="d_post" value="<?php echo $post['id'] ?>">
                                     <i class='bx bx-trash'></i>
                                 </button>
-                            </form>
 
                             <?php } ?>
+
+                            </form>
 
                         </div>
                         
@@ -109,8 +168,7 @@ if(isset($_POST["d_post"])) {
                         <div class="post-footer">
                             
                             <p>
-                                <i class="hicon icon bx bx-heart" style="margin-right: 0;"></i>
-                                <?php echo $post['likes']?>
+                                <?php echo "Likes: ".$post['likes']?>
                             </p>
 
                         </div>
@@ -119,7 +177,6 @@ if(isset($_POST["d_post"])) {
 
         </div>
     </div>
-
 
 </body>
 </html>
