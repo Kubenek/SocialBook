@@ -85,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
     <link href="styles/feed.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
     <link href="styles/scrollbar.css" rel="stylesheet">
+    <link href="styles/like.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/toggle-like-icon.js" defer></script>
@@ -124,8 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
 
                                 <?php $hStatus = check_status($post['id'], $cur_id); ?>
 
-                                <button class="hicon" name="like_post" value="<?php echo $post['id'] ?>">
-                                    <i class="icon bx <?php echo ($hStatus) ? "bxs-heart" : "bx-heart" ?>"></i>
+                                <button class="hicon like-button" name="like_post" value="<?php echo $post['id'] ?>">
+                                    <i class="icon like-icon bx <?php echo ($hStatus) ? "bxs-heart" : "bx-heart" ?>"></i>
                                 </button>
 
                             </form>
@@ -165,11 +166,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
 
     <script>
         $(document).ready(function() {
-            $('#likeForm').on('submit', function(event) {
+            $('.like-button').on('click', function(event) {
             event.preventDefault();
 
             var post_id = $('button[name="like_post"]').val();
             var user_id = <?php echo $cur_id; ?>;
+            var like_icon = $(this).find('.like-icon');
 
             $.ajax({
                 url: 'feed.php',
@@ -180,6 +182,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
                 },
                 success: function(response) {
                     $('#likes-' + post_id).text("Likes: " + response);
+
+                    like_icon.addClass('liked');
+
+                    setTimeout(function() {
+                        like_icon.removeClass('liked');
+                    }, 300);
                 },
                 error: function(xhr, status, error) {
                 console.error('AJAX Error: ' + status + error);
