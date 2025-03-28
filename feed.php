@@ -49,14 +49,26 @@ if(isset($_POST["d_post"])) {
 }
 
 include "scripts/php/like_post.php";
+include "scripts/php/is_plbc_user.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
     $post_id = $_POST['like_post']; 
     $user_id = $cur_id;
 
-    $response = add_like($post_id, $user_id);
+    add_like($post_id, $user_id);
 
-    echo $response; 
+    $conn = new mysqli("localhost", "root", "", "dane");
+    $sql = "SELECT likes FROM posts WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $post_id);
+    $stmt->execute();
+    $stmt->bind_result($updated_likes);
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+    echo $updated_likes;
+    exit;
 }
 
 ?>
@@ -75,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
     <link href="styles/scrollbar.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts/toggle-like-icon.js" defer></script>
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
     
@@ -103,13 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
                             $uName = fetch_login_by_id($post['user_id']);
                         ?>
                         <div class="top-content">
+
                             <img width="30px" height="30px" src="images/gen/user.png">
                             <h3><?php echo "  ".$uName; ?></h3>
 
                             <form id="likeForm">
 
-                                <button name="like_post" value="<?php echo $post['id'] ?>">
-                                    <i class="hicon icon bx bx-heart"></i>
+                                <?php $hStatus = check_status($post['id'], $cur_id); ?>
+
+                                <button class="hicon" name="like_post" value="<?php echo $post['id'] ?>">
+                                    <i class="icon bx <?php echo ($hStatus) ? "bxs-heart" : "bx-heart" ?>"></i>
                                 </button>
 
                             </form>
@@ -134,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
                         <hr class="grn-seperator" style="display: block; width: 100%; margin-bottom: 20px; margin-top: 20px;">
                         <div class="post-footer">
                             
-                            <p>
+                            <p id="likes-<?php echo $post['id'] ?>">
                                 <?php echo "Likes: ".$post['likes']?>
                             </p>
 
@@ -159,11 +175,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
                 url: 'feed.php',
                 type: 'POST',
                 data: {
-                like_post: post_id,
-                user_id: user_id
+                    like_post: post_id,
+                    user_id: user_id
                 },
                 success: function(response) {
-                    
+                    $('#likes-' + post_id).text("Likes: " + response);
                 },
                 error: function(xhr, status, error) {
                 console.error('AJAX Error: ' + status + error);
