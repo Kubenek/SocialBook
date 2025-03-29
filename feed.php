@@ -121,27 +121,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
                             <img width="30px" height="30px" src="images/gen/user.png">
                             <h3><?php echo "  ".$uName; ?></h3>
 
-                            <form id="likeForm">
+                            <div class="topButtons">
 
-                                <?php $hStatus = check_status($post['id'], $cur_id); ?>
+                                <form id="likeForm">
 
-                                <button class="hicon like-button" name="like_post" value="<?php echo $post['id'] ?>">
-                                    <i class="icon like-icon bx <?php echo ($hStatus) ? "bxs-heart" : "bx-heart" ?>"></i>
-                                </button>
+                                    <?php $hStatus = check_status($post['id'], $cur_id); ?>
 
-                            </form>
-
-                            <?php if($uName == $login) { ?>
-
-                                <form method="post">
-
-                                    <button name="d_post" value="<?php echo $post['id'] ?>">
-                                        <i class='bx bx-trash'></i>
+                                    <button class="hicon like-button" name="like_post" value="<?php echo $post['id'] ?>">
+                                        <i class="icon like-icon bx <?php echo ($hStatus) ? "bxs-heart" : "bx-heart" ?>"></i>
                                     </button>
 
                                 </form>
 
-                            <?php } ?>
+                                <?php if($uName == $login) { ?>
+
+                                    <form method="post">
+
+                                        <button name="d_post" value="<?php echo $post['id'] ?>">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+
+                                    </form>
+
+                                <?php } ?>
+
+                            </div>
 
                         </div>
                         

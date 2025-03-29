@@ -91,15 +91,8 @@ body.dark {
     color: var(--aux-filler);
 }
 
-.top-content, .top-content > form {
+.top-content {
     display: flex;
-    width: 100%;
-}
-
-.top-content > form > button {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
 }
 
 .post, .m-post {
@@ -114,3 +107,18 @@ body.dark {
     overflow-y: auto; 
     width: 100%; 
 }
+
+.top-content {
+    width: 100%;
+}
+
+.topButtons {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.topButtons > form {
+    margin-left: 2.5%;
+}
+
