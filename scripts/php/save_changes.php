@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bio = $data['bio'];
     $user_id = include("fetch_id.php");
 
-    if (empty($username) || empty($bio)) {
-        echo json_encode(['success' => false, 'message' => 'Username and bio cannot be empty.']);
+    if (empty($username)) {
+        echo json_encode(['success' => false, 'message' => 'Username cannot be empty.']);
         exit;
     }
 

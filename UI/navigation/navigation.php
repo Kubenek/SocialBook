@@ -37,7 +37,7 @@ require('UI/cr-modal/modal.php');
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="inbox.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === "inbox.php") ? "active" : "" ?>">
                         <i class='bx bx-chat icon'></i>
                         <span class="text nav-text">Inbox</span>
                     </a>
