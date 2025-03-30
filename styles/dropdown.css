@@ -23,7 +23,8 @@
 }
 
 .dropdown-content {
-    display: block; 
+    text-align: left;
+    display: block;
     max-height: 0; 
     overflow: hidden;
     background-color: #f9f9f9;
@@ -36,13 +37,31 @@
     padding: 8px 16px;
     margin: 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.dropdown-content p:hover {
-    background-color: #ddd;
+.dropdown-content > div {
+    padding: 8px 16px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dropdown-content > p:hover, .dropdown-content > div:hover {
+    background-color: #DDD;
 }
 
 .dropdown-content.show {
     max-height: 500px; 
     padding: 10px; 
+}
+
+.dropdown-button.active {
+    background-color: var(--aux-filler); 
+    color: #fff;
 }
