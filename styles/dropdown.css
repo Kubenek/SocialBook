@@ -42,7 +42,7 @@
     gap: 10px;
 }
 
-.dropdown-content > div {
+.dropdown-content div {
     padding: 8px 16px;
     margin: 0;
     cursor: pointer;
@@ -52,7 +52,7 @@
     gap: 10px;
 }
 
-.dropdown-content > p:hover, .dropdown-content > div:hover {
+.dropdown-content p:hover, .dropdown-content div:hover {
     background-color: #DDD;
 }
 
