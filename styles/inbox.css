@@ -30,3 +30,24 @@ body.dark {
     color: var(--primary-text-color);
     overflow-y: scroll;
 }
+
+.top-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.top-content .pInfo {
+    margin-right: 3%;
+    transition: transform 0.3s ease;
+}
+
+.top-content > h1 {
+    margin-left: 5%;
+    font-size: 300%;
+    font-family: "Sofia", cursive;
+    color: var(--aux-filler);
+    margin-bottom: 10px;
+}

@@ -1,3 +1,9 @@
+<?php
+
+$login = include "scripts/php/fetch_login.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +27,13 @@
 
     <div class="container">
         <div class="main-content scrollbar">
+            <div class="top-content">
+                <h1>Your Inbox</h1>   
+                <div class="pInfo">
+                    <img width="30px" height="30px" src="images/gen/user.png">
+                    <h3><?php echo "  ".$login; ?></h3>
+                </div>
+            </div>
 
         </div>
     </div>
