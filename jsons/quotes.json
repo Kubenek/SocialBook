@@ -71,7 +71,10 @@
     "quote": "If you want to go fast, go alone. If you want to go far, go together.",
     "author": "African Proverb"
   },
-  { "quote": "Dream big and dare to fail.", "author": "Norman Vaughan" },
+  { 
+    "quote": "Dream big and dare to fail.",
+    "author": "Norman Vaughan" 
+  },
   {
     "quote": "Don't watch the clock; do what it does. Keep going.",
     "author": "Sam Levenson"
@@ -192,7 +195,10 @@
     "quote": "Doubt kills more dreams than failure ever will.",
     "author": "Suzy Kassem"
   },
-  { "quote": "Everything you can imagine is real.", "author": "Pablo Picasso" },
+  { 
+    "quote": "Everything you can imagine is real.",
+    "author": "Pablo Picasso" 
+  },
   {
     "quote": "The best way to predict the future is to create it.",
     "author": "Abraham Lincoln"
