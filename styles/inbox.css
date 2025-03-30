@@ -51,3 +51,7 @@ body.dark {
     color: var(--aux-filler);
     margin-bottom: 10px;
 }
+
+.content > p {
+    color: #d2d2d3;
+}

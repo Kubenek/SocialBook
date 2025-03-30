@@ -35,6 +35,10 @@ $login = include "scripts/php/fetch_login.php";
                 </div>
             </div>
 
+            <div class="content">
+                <p>Your inbox is empty</p>
+            </div>
+
         </div>
     </div>
 
