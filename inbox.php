@@ -8,10 +8,22 @@
 
     <link href="styles/scrollbar.css" rel="stylesheet"> 
     <link href="styles/basics.css" rel="stylesheet">
+    <link href="styles/inbox.css" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <?php include('UI/navigation/navigation-imports.php'); ?>
 
 </head>
 <body>
     
+    <?php require('UI/navigation/navigation.php'); ?>
+
+    <div class="container">
+        <div class="main-content scrollbar">
+
+        </div>
+    </div>
+
 </body>
 </html>
