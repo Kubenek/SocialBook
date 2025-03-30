@@ -4,16 +4,6 @@ $login = include("scripts/php/fetch_login.php");
 
 $bio = include("scripts/php/fetch_bio.php");
 
-function saveChanges() {
-    $conn = new mysqli("localhost","root","","dane");
-
-
-
-    $conn->close();
-}
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +21,7 @@ function saveChanges() {
 
     <script src="scripts/dropdown.js" defer></script>
     <script src="scripts/char_counter.js" defer></script>
+    <script src="scripts/save_changes.js" defer></script>
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
 
@@ -43,24 +34,26 @@ function saveChanges() {
         <div class="main-content scrollbar">
             <div class="top-content">
                 <h1>Account Settings</h1>   
-                <button class="saveButton">Save changes</button>
+                <button class="saveButton" onclick="saveChanges()">Save changes</button>
             </div>
 
             <div class="dropdownSets">
                 <div class="infoSet dropdown">
                     <button class="dropdown-button">User Information</button>
                     <div class="dropdown-content">
-                        <p>
-                            Username: 
-                            <input type="text" class="sInput" value="<?php echo $login ?>">
-                        </p>
-                        <div>
-                            Bio:
-                            <div class="sTextAreaWrapper">
-                                <textarea id="bioInput" class="sTextArea" maxlength="120"><?php echo $bio; ?></textarea>
-                                <p id="charCount">0/120</p>
+                        <form id="settingsForm">
+                            <p>
+                                Username: 
+                                <input type="text" id="usernameInput" class="sInput" value="<?php echo $login ?>">
+                            </p>
+                            <div>
+                                Bio:
+                                <div class="sTextAreaWrapper">
+                                    <textarea id="bioInput" class="sTextArea" maxlength="120"><?php echo $bio; ?></textarea>
+                                    <p id="charCount">0/120</p>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 

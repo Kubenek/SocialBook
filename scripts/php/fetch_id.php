@@ -7,7 +7,7 @@ if(session_status() == PHP_SESSION_NONE) {
 $ssid = session_id();
 $conn = new mysqli("localhost", "root", "", "dane");
 
-$login = include("scripts/php/fetch_login.php");
+$login = include("fetch_login.php");
 
 $id = "NULL";
 
