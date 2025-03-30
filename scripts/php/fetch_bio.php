@@ -7,18 +7,18 @@ if(session_status() == PHP_SESSION_NONE) {
 $ssid = session_id();
 $conn = new mysqli("localhost", "root", "", "dane");
 
-$login = include("fetch_login.php");
+$login = include("scripts/php/fetch_login.php");
 
-$id = "NULL";
+$bio = "";
 
-$sql = "SELECT `id` FROM `users` WHERE `login` = '$login'";
+$sql = "SELECT `bio` FROM `users` WHERE `login` = '$login'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
 
 while($row = $result->fetch_assoc()) {
-    $id = $row['id'];
+    $bio = $row['bio'];
 }
 
-return $id;
+return $bio;

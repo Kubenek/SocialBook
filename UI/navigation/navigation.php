@@ -64,7 +64,7 @@ require('UI/cr-modal/modal.php');
                 </a>
             </li>
             <li class="nav-link">
-                <a href="#">
+                <a href="settings.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === "settings.php") ? "active" : "" ?>">
                     <i class='bx bx-cog icon' ></i>
                     <span class="text nav-text">Settings</span>
                 </a>

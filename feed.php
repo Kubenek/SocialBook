@@ -36,6 +36,13 @@ function delete_post($id) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->close();
+
+    $ssql = "DELETE FROM `likes` WHERE `post_id` = ?";
+    $stmt = $conn->prepare($ssql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+
     $conn->close();
 }
 
@@ -84,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
     <link href="styles/basics.css" rel="stylesheet">
     <link href="styles/feed.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
-    <link href="styles/scrollbar.css" rel="stylesheet">
+    <link href="styles/scrollbar.css" rel="stylesheet"> 
     <link href="styles/like.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
