@@ -36,6 +36,13 @@ function delete_post($id) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->close();
+
+    $ssql = "DELETE FROM `likes` WHERE `post_id` = ?";
+    $stmt = $conn->prepare($ssql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+
     $conn->close();
 }
 
