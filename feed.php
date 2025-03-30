@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
     <link href="styles/basics.css" rel="stylesheet">
     <link href="styles/feed.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
-    <link href="styles/scrollbar.css" rel="stylesheet">
+    <link href="styles/scrollbar.css" rel="stylesheet"> 
     <link href="styles/like.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
