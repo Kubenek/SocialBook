@@ -19,6 +19,8 @@ $bio = include("scripts/php/fetch_bio.php");
     <link href="styles/search.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
 
+    <script src="scripts/searchAJAX.js" defer></script>
+
     <?php include('UI/navigation/navigation-imports.php'); ?>
 
 </head>
@@ -33,11 +35,11 @@ $bio = include("scripts/php/fetch_bio.php");
             </div>
 
             <div class="searchWrapper">
-                <form method="post">
+                <form method="post" id="searchForm">
                     
-                    <input type="text" class="searchInput" placeholder="Enter Username...">
+                    <input type="text" name="name-input" class="searchInput" placeholder="Enter Username...">
 
-                    <button class="searchButton" onclick="saveChanges()">
+                    <button class="searchButton">
                         <i class="icon bx bx-search"></i>
                     </button>
 
