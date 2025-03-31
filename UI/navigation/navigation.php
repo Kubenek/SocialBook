@@ -31,7 +31,7 @@ require('UI/cr-modal/modal.php');
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="search.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === "search.php") ? "active" : "" ?>">
                         <i class='bx bx-search icon' ></i>
                         <span class="text nav-text">Search</span>
                     </a>
