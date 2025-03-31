@@ -52,6 +52,12 @@ body.dark {
     width: 100%;
 }
 
+.searchWrapper form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
 .searchInput {
     width: 40% !important;
     margin-left: 5% !important;

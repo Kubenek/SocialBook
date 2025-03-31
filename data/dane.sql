@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2025 at 04:33 PM
+-- Generation Time: Mar 31, 2025 at 10:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `followers`
+--
+
+CREATE TABLE `followers` (
+  `id` int(11) NOT NULL,
+  `follower_id` int(11) NOT NULL,
+  `following_id` int(11) NOT NULL,
+  `followed_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `likes`
 --
 
@@ -38,8 +51,9 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
-(194, 2, 12),
-(195, 8, 12);
+(196, 2, 12),
+(197, 8, 12),
+(198, 9, 12);
 
 -- --------------------------------------------------------
 
@@ -61,7 +75,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `created_at`, `likes`) VALUES
-(12, 2, 'xd', 'xd2', '2025-03-30 14:05:45', 2);
+(12, 2, 'xd', 'xd2', '2025-03-30 14:05:45', 3);
 
 -- --------------------------------------------------------
 
@@ -74,6 +88,13 @@ CREATE TABLE `session` (
   `login` varchar(50) NOT NULL,
   `session_id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `session`
+--
+
+INSERT INTO `session` (`id`, `login`, `session_id`) VALUES
+(49, 'Kubeku', 'mhl9vrglvfrh7u3l6bdr32r7vg');
 
 -- --------------------------------------------------------
 
@@ -93,12 +114,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `bio`) VALUES
-(2, 'adlord', '$2y$10$lO3sELAg85xAhcanYZaqaOfG8X0qmqxuPKmwci1PDg5.zyTRDFLna', 'asd'),
-(8, 'Kubenku', '$2y$10$SqmedK6fnlO2Buautw1g2emGFGdlemNZLz9sqexCZ2UWzoaxoiCKu', 'we need to build a wall, because why shouldn\'t we? :>');
+(2, 'adlord', '$2y$10$lO3sELAg85xAhcanYZaqaOfG8X0qmqxuPKmwci1PDg5.zyTRDFLna', 'asda'),
+(8, 'Kubenku', '$2y$10$SqmedK6fnlO2Buautw1g2emGFGdlemNZLz9sqexCZ2UWzoaxoiCKu', 'we need to build a wall, because why shouldn\'t we? :>'),
+(9, 'Kubeku', '$2y$10$KJksEK0LM1WZ3lDCDOLGeusGViQ4p158YJ7RpGB0pEhvJGRVlQ89a', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `followers`
+--
+ALTER TABLE `followers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `follower_id` (`follower_id`,`following_id`),
+  ADD KEY `follower_id_2` (`follower_id`,`following_id`);
 
 --
 -- Indexes for table `likes`
@@ -132,10 +162,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `followers`
+--
+ALTER TABLE `followers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -147,13 +183,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `session`
 --
 ALTER TABLE `session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
