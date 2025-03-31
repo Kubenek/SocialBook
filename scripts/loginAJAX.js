@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form")
-    const errorContainer = document.createElement("div")
-    errorContainer.classList.add("modal")
-    form.appendChild(errorContainer)
 
+    const errorContainer = document.createElement('div')
+
+    document.body.appendChild(errorContainer);
+ 
     form.addEventListener("submit", (e) => {
         e.preventDefault()
 
@@ -16,7 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if(data.error) {
-                errorContainer.textContent = data.error;
+
+                const html = `
+                    <div class="modal" id="errorModal">
+                        <div class="modal-content">
+
+                            <h1 id="modalTitle">Error</h1>
+
+                            <p class="modalText">${data.error}</p>
+
+                            <button class="closeModal">Okay</button>
+
+                        </div>
+                    </div>
+                `
+
+                errorContainer.innerHTML = html
+
+                document.getElementById("errorModal").style.display = "flex";
+
+                document.querySelector(".closeModal").addEventListener("click", () => {
+                    document.getElementById("errorModal").style.display = "none";
+                });
+
             } else if (data.success) {
                 window.location.href = "feed.php"
             }

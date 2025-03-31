@@ -20,9 +20,9 @@ include("scripts/php/auto_redirect.php");
     <link href="styles/basics.css" rel="stylesheet">
     <link href="styles/login.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
+    <link href="styles/modal.css" rel="stylesheet">
 
     <?php include("UI/splide/splide-imports.php"); ?>
-    <?php include("UI/error/imports.php"); ?>
 
     <script src="scripts/login-splide.js" defer></script>
     <script src="scripts/loginAJAX.js" defer></script>
