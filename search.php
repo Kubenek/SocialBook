@@ -17,6 +17,7 @@ $bio = include("scripts/php/fetch_bio.php");
     <link href="styles/basics.css" rel="stylesheet">
     <link href="styles/scrollbar.css" rel="stylesheet"> 
     <link href="styles/search.css" rel="stylesheet">
+    <link href="styles/seperators.css" rel="stylesheet">
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
 
@@ -29,9 +30,29 @@ $bio = include("scripts/php/fetch_bio.php");
         <div class="main-content scrollbar">
             <div class="top-content">
                 <h1>Search for user</h1>   
-                <button class="searchButton" onclick="saveChanges()">
-                    <i class="icon bx bx-search"></i>
-                </button>
+            </div>
+
+            <div class="searchWrapper">
+                <form method="post">
+                    
+                    <input type="text" class="searchInput" placeholder="Enter Username...">
+
+                    <button class="searchButton" onclick="saveChanges()">
+                        <i class="icon bx bx-search"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="spWrapper">
+                <hr class="grn-seperator">
+            </div>            
+
+            <div class="resultWrapper">
+                <div class="resultList">
+
+                </div>
             </div>
 
         </div>

@@ -38,22 +38,42 @@ body.dark {
     align-items: center;
 }
 
-.top-content .searchButton {
-    margin-right: 3%;
-    transition: transform 0.3s ease;
-}
-
-.top-content .searchButton:hover {
-    transform: scale(1.1);
-}
-
 .top-content > h1 {
-    margin-left: 5%;
+    margin-left: 5% !important;
     font-size: 300%;
     font-family: "Sofia", cursive;
     color: var(--aux-filler);
     margin-bottom: 10px;
 }
 
+.searchWrapper {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.searchInput {
+    width: 40% !important;
+    margin-left: 5% !important;
+}
+
+.searchButton {
+    margin-left: 2%;
+    transition: transform 0.3s ease;
+}
+
+.searchButton:hover {
+    transform: scale(1.1);
+}
 
 
+.resultWrapper {
+    width: 100%;
+    height: auto;
+}
+
+.resultList {
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+}
