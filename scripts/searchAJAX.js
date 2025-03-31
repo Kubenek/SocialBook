@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault(); 
 
         const formData = new FormData(form);
-        console.log([...formData]);
 
         fetch("scripts/php/searchHandler.php", {
             method: "POST",
@@ -18,9 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (data.response && Array.isArray(data.response) && data.response.length > 0) {
                 data.response.forEach(user => {
+
+                    if(user.bio === "") {
+                        user.bio = "No information"
+                    }
+
                     const userItem = document.createElement("div");
                     userItem.classList.add("user-item"); 
-                    userItem.textContent = user.login; 
+                    userItem.innerHTML = `<div class="userInfo">
+                                            <img width="30px" height="30px" src="images/gen/user.png">
+                                            <h3>${user.login}</h3>
+                                            <button class="followButton">Follow</button>
+                                          </div>
+                                          <p>${user.bio}</p>` 
                     resultContainer.appendChild(userItem);
                 });
             } else {

@@ -37,7 +37,7 @@ $bio = include("scripts/php/fetch_bio.php");
             <div class="searchWrapper">
                 <form method="post" id="searchForm">
                     
-                    <input type="text" name="name-input" class="searchInput" placeholder="Enter Username...">
+                    <input type="text" name="name-input" class="searchInput" placeholder="Enter Username..." autocomplete="off">
 
                     <button class="searchButton">
                         <i class="icon bx bx-search"></i>
