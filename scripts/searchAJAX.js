@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     userItem.innerHTML = `<div class="userInfo">
                                             <img width="30px" height="30px" src="images/gen/user.png">
                                             <h3>${user.login}</h3>
-                                            <button class="followButton" data-user-id="${user.id}">Follow</button>
+                                            <button class="followButton ${user.following}" data-user-id="${user.id}">${user.following}</button>
                                           </div>
                                           <p>${user.bio}</p>` 
                     resultContainer.appendChild(userItem);
