@@ -5,12 +5,6 @@
     transition: all 0.3s ease;
 }
 
-body.dark {
-    --primary-feed-color: #242526;
-    --primary-text-color: #fff;
-    --toggle-color: #18191a;
-}
-
 .modal {
     display: none; 
     position: fixed;
@@ -28,14 +22,14 @@ body.dark {
     margin: 10% auto;
     padding: 30px;
     border-radius: 8px;
-    width: 80%; 
-    max-width: 500px;
+    width: 20%; 
+    height: 30%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
     text-align: center;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 250%;
     margin-bottom: 20px;
     font-family: "Sofia", cursive;
     color: var(--aux-filler);
@@ -54,6 +48,11 @@ button {
 
 button:hover {
     background-color: var(--main-filler); /* Darker green on hover */
+}
+
+.modalText {
+    margin-bottom: 10%;
+    font-size: 150%;
 }
 
 @media (max-width: 600px) {
