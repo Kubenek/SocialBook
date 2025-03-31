@@ -27,11 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
                     userItem.innerHTML = `<div class="userInfo">
                                             <img width="30px" height="30px" src="images/gen/user.png">
                                             <h3>${user.login}</h3>
-                                            <button class="followButton">Follow</button>
+                                            <button class="followButton" data-user-id="${user.id}">Follow</button>
                                           </div>
                                           <p>${user.bio}</p>` 
                     resultContainer.appendChild(userItem);
                 });
+
+                document.querySelectorAll(".followButton").forEach(button => {
+                    button.addEventListener("click", () => {
+                        const userID = button.getAttribute("data-user-id")
+                        
+                        fetch("scripts/php/followScript.php", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: `followUser=${userID}`
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if(data.success) {
+                                button.textContent = "Following";
+                                button.disabled = true;
+                            } else {
+                                alert(data.error);
+                            }
+                        })
+                        .catch(error => console.error("Error: " + error));
+                    })
+                })
+
             } else {
                 resultContainer.innerHTML = "<p>No users found.</p>";
             }
