@@ -1,7 +1,9 @@
-<?php
-$conn = new mysqli("localhost", "root", "", "dane");
+<?php 
 
+$conn = new mysqli("localhost", "root", "", "dane");
+session_start();
 $ssid = session_id();
+
 $sql = "SELECT `session_id` FROM `session`";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -13,30 +15,6 @@ while($row = $result->fetch_assoc()) {
     }
 }
 
-if(isset($_POST["submit-form"])) {
-
-    $login = $_POST['input-name'];
-    $password = $_POST['input-password'];
-
-    if($login == "" || $password == "") {
-        echo "Wypełnij wszystkie pola!";
-        die();
-    }
-
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO `users` (`id`, `login`, `password`) VALUES(NULL, ?, ?)";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $login, $password_hash);
-    if ($stmt->execute()) {
-        // Success
-        header("Location: login.php");
-    } else {
-        // Error
-        echo "Error: " . $stmt->error;
-    }
-    //header("Location: login.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +28,12 @@ if(isset($_POST["submit-form"])) {
     <link href="styles/basics.css" rel="stylesheet">
     <link href="styles/login.css" rel="stylesheet">
     <link href="styles/seperators.css" rel="stylesheet">
+    <link href="styles/modal.css" rel="stylesheet">
 
     <?php include("UI/splide/splide-imports.php"); ?>
 
     <script src="scripts/login-splide.js" defer></script>
+    <script src="scripts/accrAJAX.js" defer></script>
     
 </head>
 <body>
