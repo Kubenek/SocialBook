@@ -1,54 +1,11 @@
 <?php
+
 session_start();
 $conn = new mysqli("localhost", "root", "", "dane");
 
 $ssid = session_id();
 
 include("scripts/php/auto_redirect.php");
-
-if(isset($_POST['submit-form'])) {
-    
-    $login = $_POST["input-name"];
-    $pass = $_POST["input-password"];
-    $ssid = session_id();
-
-    if($login == "" || $pass == "") {
-        echo "Wypełnij wszystkie pola!";
-    } else {
-        $found = false;
-        $sql2 = "SELECT * FROM `users`";
-        $result = $conn->query($sql2);
-
-        while($row = $result->fetch_assoc()) {
-            if($row["login"] == $login) {
-                $found = true;
-                if(password_verify($pass, $row['password'])) {
-
-                    $sql = "DELETE FROM `session`";
-                    $conn->query($sql);
-
-                    $sql = "INSERT INTO `session` (`id`, `session_id`, `login`) VALUES (NULL,?,?);";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("ss", $ssid, $login);
-                    $stmt->execute();
-                    $stmt->close();
-
-                    header("Location: feed.php");
-                } else {
-                    echo "Hasło się nie zgadza!";
-                }
-                break;
-            }
-        }
-        if(! $found) {
-            echo "Nie znaleziono takiego loginu!";
-        }
-
-    }
-
-}
-
-$conn->close();
 
 ?>
 
@@ -65,8 +22,10 @@ $conn->close();
     <link href="styles/seperators.css" rel="stylesheet">
 
     <?php include("UI/splide/splide-imports.php"); ?>
+    <?php include("UI/error/imports.php"); ?>
 
     <script src="scripts/login-splide.js" defer></script>
+    <script src="scripts/loginAJAX.js" defer></script>
 
 </head>
 <body>
