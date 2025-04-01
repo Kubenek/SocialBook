@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $users = [];
     while ($row = $result->fetch_assoc()) {
-        $checkFollow = "SELECT 1 FROM `followers` WHERE `follower_id` = ? AND `following_id` = ?";
+        $checkFollow = "SELECT * FROM `followers` WHERE `follower_id` = ? AND `following_id` = ?";
         $stmt2 = $conn->prepare($checkFollow);
-        $stmt2->bind_param("ss", $idU, $row['login']);
+        $stmt2->bind_param("ii", $idU, $row['id']);
         $stmt2->execute();
         $followResult = $stmt2->get_result();
         $isFollowing = $followResult->num_rows > 0;
