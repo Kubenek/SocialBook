@@ -57,7 +57,7 @@ function fetch_login_by_id($id) {
 
                 <?php
 
-                    $sql = "SELECT * FROM `followers` WHERE `seen` = 0 AND `following_id` = ? ORDER BY `followed_at` DESC";
+                    $sql = "SELECT * FROM `followers` WHERE `following_id` = ? ORDER BY `followed_at` DESC";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("i", $cID);
                     $stmt->execute();
@@ -70,9 +70,10 @@ function fetch_login_by_id($id) {
                         $dateString = $row['followed_at'];
                         $date = DateTime::createFromFormat('Y-m-d H:i:s', $dateString);
                         $formattedDate = $date->format('d M Y H:i');
+                        $aClass = ($row['seen'] == 0) ? "unread" : "";
 
                         echo "
-                            <div class='notify-item'>
+                            <div class='notify-item $aClass'>
                                 <div class='notify-cont'>
                                     <img src='images/gen/user.png' width=30 height=30>
                                     <p class='notify-text'> $fLogin has started following you! </p>

@@ -5,6 +5,10 @@ $login = include('scripts/php/fetch_login.php');
 
 require('UI/cr-modal/modal.php');
 
+$nCount = include "scripts/php/notify_count.php";
+
+$displayCount = $nCount > 9 ? "9+" : $nCount;
+
 ?>
  
 
@@ -46,6 +50,9 @@ require('UI/cr-modal/modal.php');
                     <a href="notify.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === "notify.php") ? "active" : "" ?>">
                         <i class='bx bx-bell icon' ></i>
                         <span class="text nav-text">Notifications</span>
+                        <?php if ($nCount > 0 && !(basename($_SERVER['PHP_SELF']) === "notify.php")): ?>
+                            <span class="notify-dot"><?php echo $displayCount; ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li class="nav-link">
