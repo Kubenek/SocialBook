@@ -38,12 +38,12 @@ body.dark {
     align-items: center;
 }
 
-.top-content .readAll {
+.top-content > form {
     margin-right: 3%;
     transition: transform 0.3s ease;
 }
 
-.top-content .readAll:hover {
+.top-content > form:hover {
     transform: scale(1.1);
 }
 

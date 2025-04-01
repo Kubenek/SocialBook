@@ -39,6 +39,8 @@ function fetch_login_by_id($id) {
     <link href="styles/scrollbar.css" rel="stylesheet"> 
     <link href="styles/notify.css" rel="stylesheet">
 
+    <script src="scripts/readAllAJAX.js" defer></script>
+ 
     <?php include('UI/navigation/navigation-imports.php'); ?>
 
 </head>
@@ -50,7 +52,9 @@ function fetch_login_by_id($id) {
         <div class="main-content scrollbar">
             <div class="top-content">
                 <h1>Notifications</h1>   
-                <button class="readAll">Read All</button>
+                <form method="POST" id="readForm">
+                    <button class="readAll">Read All</button>
+                </form>
             </div>
 
             <div class="page-content">
