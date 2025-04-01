@@ -1,9 +1,7 @@
 function saveChanges() {
-    // Get form data
     const username = document.getElementById('usernameInput').value;
     const bio = document.getElementById('bioInput').value;
 
-    // Create an object to hold the form data
     const data = {
         username: username,
         bio: bio
@@ -14,7 +12,7 @@ function saveChanges() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) // Send data as JSON
+        body: JSON.stringify(data) 
     })
     .then(response => response.json())
     .then(data => {
@@ -22,7 +20,7 @@ function saveChanges() {
         if (data.success) {
             alert('Changes saved successfully!');
         } else {
-            alert('There was an error saving your changes.');
+            alert('There was an error saving your changes. ' + data.message);
         }
     })
     .catch(error => {

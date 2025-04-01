@@ -13,6 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
     $username = $data['username'];
+
+    $existLogin = $username;
+    $exists = include "userExists.php";
+
+    if($exists) {
+        echo json_encode(['success' => false, 'message' => 'Username already exists']);
+        exit;
+    }
+
     $bio = $data['bio'];
     $user_id = include("fetch_id.php");
 
