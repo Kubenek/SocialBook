@@ -14,10 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $username = $data['username'];
 
+    $login = include "fetch_login.php";
+
     $existLogin = $username;
     $exists = include "userExists.php";
 
-    if($exists) {
+    if($exists && $username != $login) {
         echo json_encode(['success' => false, 'message' => 'Username already exists']);
         exit;
     }
