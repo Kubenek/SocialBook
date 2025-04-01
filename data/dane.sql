@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2025 at 10:00 PM
+-- Generation Time: Apr 01, 2025 at 07:52 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -31,7 +31,8 @@ CREATE TABLE `followers` (
   `id` int(11) NOT NULL,
   `follower_id` int(11) NOT NULL,
   `following_id` int(11) NOT NULL,
-  `followed_at` datetime NOT NULL
+  `followed_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `seen` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -94,7 +95,7 @@ CREATE TABLE `session` (
 --
 
 INSERT INTO `session` (`id`, `login`, `session_id`) VALUES
-(49, 'Kubeku', 'mhl9vrglvfrh7u3l6bdr32r7vg');
+(50, 'adlord', 'i78732029phc1rdnnusarqjoqb');
 
 -- --------------------------------------------------------
 
@@ -165,7 +166,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -183,7 +184,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `session`
 --
 ALTER TABLE `session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `users`

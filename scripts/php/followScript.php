@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['followUser'])) {
     if ($result->num_rows > 0) {
         echo json_encode(["success" => false, "error" => "Already following this user."]);
     } else {
-        $insertQuery = "INSERT INTO `followers` (`id`, `follower_id`, `following_id`) VALUES (NULL, ?, ?)";
+        $insertQuery = "INSERT INTO `followers` (`id`, `follower_id`, `following_id`, `followed_at`, `seen`) VALUES (NULL, ?, ?, NOW(), FALSE)";
         $stmt = $conn->prepare($insertQuery);
         $stmt->bind_param("ii", $follower, $following);
         if ($stmt->execute()) {
