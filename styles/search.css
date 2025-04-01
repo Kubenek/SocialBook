@@ -108,7 +108,14 @@ body.dark {
 }
 
 .resultList .user-item p {
-    margin-left: 3%;
+    display: block; 
+    margin-left: 3%; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    width: 70%; 
+    flex-grow: 0; 
+    text-align: left;
 }
 .resultList .user-item .followButton {
     border-radius: 10px;
