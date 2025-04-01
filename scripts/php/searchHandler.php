@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $isFollowing = $followResult->num_rows > 0;
 
         $users[] = [
+            "id" => $row["id"],
             "login" => $row['login'],
             "bio" => $row['bio'],
             "following" => ($isFollowing) ? "Following" : "Follow"
