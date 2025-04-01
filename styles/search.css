@@ -1,0 +1,125 @@
+@import url('variables.css');
+
+.container { 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+body.dark * {
+    transition: color 0.3s ease;
+}
+
+body.dark {
+    --primary-feed-color: #242526;
+    --primary-text-color: #fff;
+}
+
+.main-content {
+    width: 50%;
+    height: inherit;
+    background-color: var(--primary-feed-color);
+    display: flex;
+    justify-content: flex-start; 
+    text-align: center;
+    flex-direction: column;
+    color: var(--primary-text-color);
+    overflow-y: scroll;
+    align-items: flex-start;
+}
+
+.top-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-content > h1 {
+    margin-left: 5% !important;
+    font-size: 300%;
+    font-family: "Sofia", cursive;
+    color: var(--aux-filler);
+    margin-bottom: 10px;
+}
+
+.searchWrapper {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.searchWrapper form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.searchInput {
+    width: 40% !important;
+    margin-left: 5% !important;
+}
+
+.searchButton {
+    margin-left: 2%;
+    transition: transform 0.3s ease;
+}
+
+.searchButton:hover {
+    transform: scale(1.1);
+}
+
+
+.resultWrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resultList {
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resultList .user-item {
+    display: flex;
+    border: 2px solid var(--aux-filler);
+    border-radius: 10px;
+    width: 100%;
+    height: 10vh;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.resultList .user-item .userInfo {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.resultList .user-item p {
+    margin-left: 3%;
+}
+.resultList .user-item .followButton {
+    border-radius: 10px;
+    margin-left: auto;
+    font-size: 13px !important;
+}
+
+.resultList .user-item:hover {
+    background-color: #ddd;
+}
+
+.resultList .user-item .Following {
+    background-color: var(--main-filler) !important;
+}
