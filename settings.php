@@ -60,9 +60,14 @@ $bio = include("scripts/php/fetch_bio.php");
                 <div class="priSet dropdown">
                     <button class="dropdown-button">Privacy</button>
                     <div class="dropdown-content">
-                        <p>Setting 1</p>
-                        <p>Setting 2</p>
-                        <p>Setting 3</p>
+                        <div class="dropdown-in">
+                            <button class="dropdown-button-in">Change password</button>
+                            <div class="dropdown-content-in">
+                                <p>Old Password</p>
+                                <p>New Password</p>
+                                <p>Repeat Password</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
