@@ -127,3 +127,37 @@ Logowanie zawiera walidację pól oraz jest asynchroniczne dzięki technologii A
 
 
 
+
+# Powiadomienia
+
+[-] Ta strona zawiera wszystkie powiadomienia dotyczące osób, które cię obserwują. Jeśli któreś nie zostało odczytane, będzie miało czerwoną kropkę w prawym górnym rogu, sygnalizując nowość.
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/notify/main.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/notify/code1.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/notify/code4.png?raw=true)
+
+[-] Na górze strony jest przycism "Read All", który odczytuje wszystkie powiadomienia za pomocą technologii AJAX oraz PHP
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/notify/code3.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/notify/code2.png?raw=true)
+
+
+# Tworzenie postów
+
+[-] Kiedy naciśniemy na przycisk od tworzenia posta, otwiera się okienko modal, za pomocą którego możemy wpisać tytuł oraz zawartość posta. Walidacja jest na podstawie pola 'required'
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/cr/main.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/cr/code1.png?raw=true)
+
+[-] System postowania stworzony przy użyciu PHP
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/cr/code2.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/cr/code3.png?raw=true)
+
+
+
