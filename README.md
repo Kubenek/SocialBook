@@ -161,3 +161,53 @@ Logowanie zawiera walidację pól oraz jest asynchroniczne dzięki technologii A
 
 
 
+
+# Ustawienia Konta
+
+[-] Strona składa się z dwóch rozwijanych sekcji "User Information" oraz "Privacy", które zawierają ustawienia z ich dziedzin. 
+
+[x] Sekcja Privacy nie ma narazie żadnych ustawień [x]
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/settings/main.png?raw=true)
+
+[-] Sekcja User Information zawiera 2 ustawienia: "username" oraz "bio", gdzie bio można poprostu zostawić puste, a username musi być unikalne oraz nie puste
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/settings/code1.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/settings/code2.png?raw=true)
+
+[-] Na górze strony jest przycisk "Save changes", który waliduje pola oraz zapisuje zmiany w bazie danych za pomocą AJAX i PHP
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/settings/code3.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/settings/code4.png?raw=true)
+
+
+
+
+
+# Logout
+
+[-] Na samym dole paska nawigacji jest przycisk logout, który wylogowywuje użytkownika oraz usuwa sesję z bazy danych
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/logout/main.png?raw=true)
+
+[-] Wylogowanie jest robione poprzez prosty skrypt w PHP
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/logout/code1.png?raw=true)
+
+
+
+# Tryb Ciemny
+
+[-] Tryb ciemny nie jest skończony, lecz częściowo działa. Na dole pasku nawigacyjnege jest slider "Dark Mode", który zmienai tryb z jasnego na ciemny i vice versa
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/dm/main.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/dm/main2.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/dm/code1.png?raw=true)
+
+![alt text](https://github.com/Kubenek/SocialBook/blob/master/images/readme/dm/code2.png?raw=true)
+
+
