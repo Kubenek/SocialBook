@@ -33,6 +33,17 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                     $stmt->execute();
                     $stmt->close();
 
+                    $sql = "SELECT `theme` FROM `users` WHERE `id` = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("i", $row['id']);
+                    $stmt->execute();
+                    
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();
+                    $stmt->close();
+
+                    $_SESSION['dark_status'] = $row['theme'];
+
                     echo json_encode(["success" => true]);
                 } else {
                     echo json_encode(["error"=> "Invalid password!"]);
