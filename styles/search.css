@@ -9,10 +9,6 @@
     text-align: center;
 }
 
-body.dark * {
-    transition: color 0.3s ease;
-}
-
 body.dark {
     --primary-feed-color: #242526;
     --primary-text-color: #fff;

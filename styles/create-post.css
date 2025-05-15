@@ -1,10 +1,6 @@
 @import url('variables.css');
 @import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
 
-* {
-    transition: all 0.3s ease;
-}
-
 body.dark {
     --primary-feed-color: #242526;
     --primary-text-color: #fff;

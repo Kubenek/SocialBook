@@ -4,11 +4,9 @@
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif; 
-    transition: color 0.2s ease-out;
 }
 
 body {
     min-height: 100vh;
     background-color: var(--body-color);
-    transition: var(--tran-05);
 }

@@ -58,22 +58,24 @@ if(isset($_POST["d_post"])) {
 include "scripts/php/like_post.php";
 include "scripts/php/is_plbc_user.php";
 
-if(isset($_SESSION['dark_status'])) {
-    if($_SESSION['dark_status'] == 1) {
-        echo '<script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const body = document.querySelector("body");
-                const modeText = body.querySelector(".mode-text");
+if (
+    isset($_SESSION['dark_status']) &&
+    $_SESSION['dark_status'] == 1 &&
+    !(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+) {
+    echo '<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.querySelector("body");
+            const modeText = body.querySelector(".mode-text");
 
-                body.classList.add("dark");
-                if (modeText) {
-                    modeText.innerText = "Light mode";
-                }
-            });
-          </script>';
-    } else {
-        $_SESSION['dark_status'] = 0;
-    }
+            body.classList.add("dark");
+            if (modeText) {
+                modeText.innerText = "Light mode";
+            }
+        });
+    </script>';
+} elseif (!isset($_SESSION['dark_status'])) {
+    $_SESSION['dark_status'] = 0;
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {

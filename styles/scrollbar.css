@@ -1,9 +1,5 @@
 @import url('variables.css');
 
-* {
-    transition: all 0.3s ease;
-}
-
 body.dark {
     --scrollbar-color: #3a3b3c;
 }
