@@ -4,6 +4,24 @@ $login = include "scripts/php/fetch_login.php";
 
 include("scripts/php/auto_redirect.php");
 
+if(isset($_SESSION['dark_status'])) {
+    if($_SESSION['dark_status'] == 1) {
+        echo '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const body = document.querySelector("body");
+                const modeText = body.querySelector(".mode-text");
+
+                body.classList.add("dark");
+                if (modeText) {
+                    modeText.innerText = "Light mode";
+                }
+            });
+          </script>';
+    } else {
+        $_SESSION['dark_status'] = 0;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
