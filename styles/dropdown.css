@@ -1,0 +1,121 @@
+@import url('variables.css');
+
+body.dark * {
+    transition: color 0.3s ease;
+}
+
+body.dark {
+    --dropdown-bg: #18191a;
+    --dropdown-item-hover: #3a3b3c;
+}
+
+.dropdown {
+    width: 80%;
+    margin: 10px 0;
+}
+
+.dropdown-button {
+    padding: 10px 20px;
+    background-color: transparent; 
+    border: 2px solid var(--aux-filler);
+    color: var(--aux-filler);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+}
+
+.dropdown-button:hover {
+    background-color: var(--aux-filler); 
+    color: #fff;
+}
+
+.dropdown-content {
+    text-align: left;
+    display: block;
+    max-height: 0; 
+    overflow: hidden;
+    background-color: var(--dropdown-bg);
+    padding: 0 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    transition: max-height 0.3s ease, padding 0.3s ease; 
+}
+
+.dropdown-content p {
+    padding: 8px 16px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-content div {
+    padding: 8px 16px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dropdown-content p:hover, .dropdown-content div:hover {
+    background-color: var(--dropdown-item-hover);
+}
+
+.dropdown-content.show {
+    max-height: 500px; 
+    padding: 10px; 
+}
+
+.dropdown-button.active {
+    background-color: var(--aux-filler); 
+    color: #fff;
+}
+
+.dropdown-in {
+    width: 100%;
+    margin-top: 5px;
+    border-top: 1px solid var(--aux-filler);
+    padding-top: 5px;
+}
+
+.dropdown-button-in {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: none;
+    color: var(--aux-filler);
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-button-in:hover {
+    color: #fff;
+    background-color: var(--dropdown-item-hover);
+}
+
+.dropdown-content-in {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 20px;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.dropdown-content-in.show {
+    max-height: 300px;
+    margin-top: 5px;
+    padding: 10px 20px;
+}
+
+.dropdown-content-in p {
+    font-size: 14px;
+    padding: 5px 0;
+    color: var(--aux-filler);
+}

@@ -1,0 +1,27 @@
+@import url('variables.css');
+
+* {
+    transition: all 0.3s ease;
+}
+
+body.dark {
+    --scrollbar-color: #3a3b3c;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: var(--scrollbar-color);
+    border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background: var(--thumb-color);
+    border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--thumb-hover);
+}

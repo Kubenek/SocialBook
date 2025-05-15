@@ -1,0 +1,110 @@
+@import url('variables.css');
+
+.container { 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+body.dark * {
+    transition: color 0.3s ease;
+}
+
+body.dark {
+    --primary-feed-color: #242526;
+    --primary-text-color: #fff;
+}
+
+.main-content {
+    width: 50%;
+    height: inherit;
+    background-color: var(--primary-feed-color);
+    display: flex;
+    justify-content: flex-start; 
+    text-align: center;
+    flex-direction: column;
+    color: var(--primary-text-color);
+    overflow-y: scroll;
+    align-items: flex-start;
+}
+
+.top-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-content .saveButton {
+    margin-right: 3%;
+    transition: transform 0.3s ease;
+}
+
+.top-content .saveButton:hover {
+    transform: scale(1.1);
+}
+
+.top-content > h1 {
+    margin-left: 5%;
+    font-size: 300%;
+    font-family: "Sofia", cursive;
+    color: var(--aux-filler);
+    margin-bottom: 10px;
+}
+
+.dropdownSets {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.sInput {
+    width: 30% !important;
+    height: 40px !important;
+    margin: 0 !important;
+    margin-left: 3% !important;
+    text-align: left;
+    border-radius: 10px !important;
+    border: var(--aux-filler) 2px solid !important;
+    background-color: transparent !important;
+    display: block;
+}
+
+.sTextAreaWrapper {
+    width: 100%;
+    padding: 8px 16px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    transition: color 0.3s ease;
+}
+
+.sTextArea {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    margin-left: 3% !important;
+    text-align: left;
+    border-radius: 10px !important;
+    border: var(--aux-filler) 2px solid !important;
+    background-color: transparent !important;
+    display: block;
+    resize: none;
+    transition: color 0.3s ease;
+}
+
+#charCount {
+    font-size: 12px;
+    color: gray;
+    text-align: right;
+    margin-top: 5px;
+    margin-left: auto;
+}
+
+

@@ -1,0 +1,17 @@
+:root {
+    --main-hover: #89909F;
+    --main-filler: #538083;
+    --aux-filler: #2A7F62; 
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #538083;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+    --primary-feed-color: #FFF;
+    --scrollbar-color: #F6F5FF;
+    --thumb-color: #538083;
+    --thumb-hover: #2A7F62;
+    --dropdown-bg: #f9f9f9;
+    --dropdown-item-hover: #DDD;
+}

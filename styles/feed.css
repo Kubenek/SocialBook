@@ -1,0 +1,124 @@
+@import url('variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+
+.container { 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+* {
+    transition: all 0.3s ease;
+}
+
+body.dark {
+    --primary-feed-color: #242526;
+    --primary-text-color: #fff;
+}
+
+.main-content {
+    width: 50%;
+    height: inherit;
+    background-color: var(--primary-feed-color);
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    text-align: center;
+    flex-direction: column;
+    color: var(--primary-text-color);
+    overflow-y: scroll;
+}
+
+.m-post:hover {
+    transform: scale(1.05);
+}
+
+.m-post {
+    margin-top: 2%;
+    width: 80%;
+    border: 2px solid var(--aux-filler);
+    height: min-content;
+    border-radius: 15px;
+    box-shadow: 8px 10px 12px rgba(0,0,0,0.2);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.m-post > h1 {
+    font-size: 150%;
+    float: left;
+    font-family: "Sofia", cursive;
+    color: var(--aux-filler);
+    margin-bottom: 10px;
+}
+
+.post {
+    margin-top: 4%;
+    width: 80%;
+    border: 2px solid var(--aux-filler);
+    height: min-content;
+    border-radius: 15px;
+    box-shadow: 8px 10px 12px rgba(0,0,0,0.2);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: transform 0.3s ease;
+    word-wrap: break-word;
+}
+
+.post:hover {
+    transform: scale(1.05);
+}
+
+.post > h1 {
+    font-size: 150%;
+    float: left;
+    font-family: "Sofia", cursive;
+    color: var(--aux-filler);
+    margin-bottom: 10px;
+}
+
+.post > .post-footer {
+    color: var(--aux-filler);
+}
+
+.top-content {
+    display: flex;
+}
+
+.post, .m-post {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; 
+    max-width: 100%; 
+}
+
+.content {
+    max-height: 300px; 
+    overflow-y: auto; 
+    width: 100%; 
+}
+
+.top-content {
+    width: 100%;
+}
+
+.topButtons {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.topButtons > form {
+    margin-left: 2.5%;
+}
+
