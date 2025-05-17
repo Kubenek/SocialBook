@@ -10,9 +10,7 @@ $bio = include("scripts/php/fetch_bio.php");
 
 include("scripts/php/darkmode_init.php");
 
-function fetch_login_by_id($id) {
-
-    $conn = new mysqli("localhost", "root", "", "dane");
+function fetch_login_by_id($conn, $id) {
 
     $sql = "SELECT login FROM users WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -21,7 +19,6 @@ function fetch_login_by_id($id) {
     $results = $stmt->get_result();
     $row = $results->fetch_assoc();
     $stmt->close();
-    $conn->close();
 
     return $row["login"];
 }
@@ -70,7 +67,7 @@ function fetch_login_by_id($id) {
                     $stmt->close();
 
                     while($row = $result->fetch_assoc()) {
-                        $fLogin = fetch_login_by_id($row['follower_id']);
+                        $fLogin = fetch_login_by_id($conn, $row['follower_id']);
 
                         $dateString = $row['followed_at'];
                         $date = DateTime::createFromFormat('Y-m-d H:i:s', $dateString);
