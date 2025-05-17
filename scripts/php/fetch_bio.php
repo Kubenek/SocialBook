@@ -1,12 +1,5 @@
 <?php
 
-if(session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-$ssid = session_id();
-$conn = new mysqli("localhost", "root", "", "dane");
-
 $login = include("scripts/php/fetch_login.php");
 
 $bio = "";

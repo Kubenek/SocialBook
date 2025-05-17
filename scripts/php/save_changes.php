@@ -3,12 +3,6 @@ header('Content-Type: application/json');
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-if(session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-$ssid = session_id();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
@@ -67,6 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt1->close();
     $stmt2->close();
-    $conn->close();
+    
 }
 ?>

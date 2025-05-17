@@ -1,9 +1,6 @@
 <?php 
 
-$conn = new mysqli("localhost", "root", "", "dane");
-
-session_start();
-$ssid = session_id();
+require_once __DIR__ . "/scripts/php/init.php";
 
 $sql = "SELECT `session_id` FROM `session`";
 $stmt = $conn->prepare($sql);

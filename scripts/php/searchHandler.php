@@ -1,8 +1,5 @@
 <?php
 
-session_start();
-$conn = new mysqli("localhost", "root", "", "dane");
-
 header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") { 
@@ -44,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     echo json_encode(["response" => $users]);
 
     $stmt->close();
-    $conn->close();
+    
 }
 ?>

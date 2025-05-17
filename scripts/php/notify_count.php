@@ -1,9 +1,5 @@
 <?php
 
-if(session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
 $lID = include "fetch_id.php";
 
 $ssid = session_id();

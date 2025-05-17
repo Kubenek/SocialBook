@@ -1,12 +1,5 @@
 <?php
 
-if(session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-$conn = new mysqli("localhost", "root", "", "dane");
-$ssid = session_id();
-
 $login = include('fetch_login.php');
 
 $usql = "SELECT `id` FROM `users` WHERE `login` = ?";

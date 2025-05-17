@@ -1,9 +1,6 @@
 <?php
 
-session_start();
-$conn = new mysqli("localhost", "root", "", "dane");
-
-$ssid = session_id();
+require_once __DIR__ . "/scripts/php/init.php";
 
 include("scripts/php/auto_redirect.php");
 

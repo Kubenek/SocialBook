@@ -1,6 +1,4 @@
 <?php
-session_start();
-$conn = new mysqli("localhost", "root", "", "dane");
 
 header("Content-Type: application/json");
 
@@ -29,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['followUser'])) {
     }
 
     $stmt->close();
-    $conn->close();
+    
 } else {
     echo json_encode(["success" => false, "error" => "Invalid request"]);
 }

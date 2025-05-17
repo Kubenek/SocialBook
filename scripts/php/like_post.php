@@ -1,7 +1,6 @@
 <?php
 
-function add_like($post_id, $user_id) {
-    $conn = new mysqli("localhost", "root", "", "dane");
+function add_like($conn, $post_id, $user_id) {
 
     $sql = "SELECT * FROM likes WHERE post_id = ? AND user_id = ?";
     $stmt = $conn->prepare($sql);
@@ -33,5 +32,5 @@ function add_like($post_id, $user_id) {
 
     }
 
-    $conn->close();
+    
 }

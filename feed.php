@@ -1,20 +1,17 @@
 <?php
 
+require_once __DIR__ . "/scripts/php/init.php";
+
 include("scripts/php/auto_redirect.php");
-
+include("scripts/php/darkmode_init.php");
 $posts = include("scripts/php/fetch_posts.php");
-
 shuffle($posts);
 
 $login = include("scripts/php/fetch_login.php");
-
 $cur_id = include("scripts/php/fetch_id.php");
-
 $quote = include("scripts/php/fetch_quote.php");
 
-function fetch_login_by_id($id) {
-
-    $conn = new mysqli("localhost", "root", "", "dane");
+function fetch_login_by_id($conn, $id) {
 
     $sql = "SELECT login FROM users WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -23,13 +20,11 @@ function fetch_login_by_id($id) {
     $results = $stmt->get_result();
     $row = $results->fetch_assoc();
     $stmt->close();
-    $conn->close();
 
     return $row["login"];
 }
 
-function delete_post($id) {
-    $conn = new mysqli("localhost", "root", "", "dane");
+function delete_post($conn, $id) {
 
     $sql = "DELETE FROM `posts` WHERE `posts`.`id` = ?";
     $stmt = $conn->prepare($sql);
@@ -42,15 +37,13 @@ function delete_post($id) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->close();
-
-    $conn->close();
 }
 
 if(isset($_POST["d_post"])) {
 
     $id = $_POST["d_post"];
 
-    delete_post($id);
+    delete_post($conn, $id);
     header("Location: feed.php");
 
 }
@@ -58,33 +51,12 @@ if(isset($_POST["d_post"])) {
 include "scripts/php/like_post.php";
 include "scripts/php/is_plbc_user.php";
 
-if (
-    isset($_SESSION['dark_status']) &&
-    $_SESSION['dark_status'] == 1 &&
-    !(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
-) {
-    echo '<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const body = document.querySelector("body");
-            const modeText = body.querySelector(".mode-text");
-
-            body.classList.add("dark");
-            if (modeText) {
-                modeText.innerText = "Light mode";
-            }
-        });
-    </script>';
-} elseif (!isset($_SESSION['dark_status'])) {
-    $_SESSION['dark_status'] = 0;
-}
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
     $post_id = $_POST['like_post']; 
     $user_id = $cur_id;
 
-    add_like($post_id, $user_id);
+    add_like($conn, $post_id, $user_id);
 
-    $conn = new mysqli("localhost", "root", "", "dane");
     $sql = "SELECT likes FROM posts WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $post_id);
@@ -92,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
     $stmt->bind_result($updated_likes);
     $stmt->fetch();
     $stmt->close();
-    $conn->close();
 
     echo $updated_likes;
     exit;
@@ -141,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
                         <?php  
                             $date = DateTime::createFromFormat('Y-m-d H:i:s', $post['created_at']);
                             $formattedDate = $date->format('d M Y');
-                            $uName = fetch_login_by_id($post['user_id']);
+                            $uName = fetch_login_by_id($conn, $post['user_id']);
                         ?>
                         <div class="top-content">
 
@@ -152,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
 
                                 <form id="likeForm">
 
-                                    <?php $hStatus = check_status($post['id'], $cur_id); ?>
+                                    <?php $hStatus = check_status($conn, $post['id'], $cur_id); ?>
 
                                     <button class="hicon like-button" name="like_post" value="<?php echo $post['id'] ?>">
                                         <i class="icon like-icon bx <?php echo ($hStatus) ? "bxs-heart" : "bx-heart" ?>"></i>

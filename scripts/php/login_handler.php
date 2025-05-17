@@ -1,15 +1,11 @@
 <?php
 
-session_start();
-$conn = new mysqli("localhost","root","","dane");
-
 header("Content-Type: application/json");
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     
     $login = $_POST["input-name"];
     $pass = $_POST["input-password"];
-    $ssid = session_id();
 
     if($login == "" || $pass == "") {
         echo json_encode(["error" => "Please fill in all fields!"]);
@@ -59,4 +55,4 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
 }
 
-$conn->close();
+
