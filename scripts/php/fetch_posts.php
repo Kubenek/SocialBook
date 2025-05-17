@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 $sql = "SELECT * FROM `posts`";
 $stmt = $conn->prepare($sql);
 $stmt->execute();

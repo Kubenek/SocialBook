@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 $Tsql = "UPDATE `users` SET `theme` = ? WHERE `id` = ?";
 $cur_id = include("fetch_id.php");
 $currTheme = $_SESSION['dark_status'];

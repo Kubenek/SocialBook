@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 function add_like($conn, $post_id, $user_id) {
 
     $sql = "SELECT * FROM likes WHERE post_id = ? AND user_id = ?";

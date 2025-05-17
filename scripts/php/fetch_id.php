@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 $login = include("fetch_login.php");
 
 $id = "NULL";

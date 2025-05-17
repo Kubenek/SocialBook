@@ -1,9 +1,8 @@
 <?php
 
-$lID = include "fetch_id.php";
+require_once __DIR__ . "/init.php";
 
-$ssid = session_id();
-$conn = new mysqli("localhost", "root", "", "dane");
+$lID = include "fetch_id.php";
 
 $sql = "SELECT * FROM `followers` WHERE `following_id` = ? AND `seen` = 0";
 $stmt = $conn->prepare($sql);

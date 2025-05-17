@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (isset($data['dark_status'])) {

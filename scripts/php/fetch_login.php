@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 $login = "NULL";
 
 $sql = "SELECT `login`, `session_id` FROM `session`";

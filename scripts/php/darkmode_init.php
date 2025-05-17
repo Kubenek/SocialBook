@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 if (
     isset($_SESSION['dark_status']) &&
     $_SESSION['dark_status'] == 1 &&

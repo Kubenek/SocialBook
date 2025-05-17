@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/init.php";
+
 $uID = include "fetch_id.php";
 
 header("Content-Type: application/json");
