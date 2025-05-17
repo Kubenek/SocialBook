@@ -1,6 +1,7 @@
 <?php 
 
 $conn = new mysqli("localhost", "root", "", "dane");
+
 session_start();
 $ssid = session_id();
 

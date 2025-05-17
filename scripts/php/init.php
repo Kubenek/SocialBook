@@ -11,3 +11,9 @@ if(!isset($_ENV['DB_HOST'])) {
 require_once __DIR__ . '/fetch_database_connection.php';
 
 $conn = loadConn();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$ssid = session_id();
