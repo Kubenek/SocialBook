@@ -29,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $conn = new mysqli("localhost", "root", "", "dane");
-
     if ($conn->connect_error) {
         echo json_encode(['success' => false, 'message' => 'Database connection failed.']);
         exit;

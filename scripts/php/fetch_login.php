@@ -2,18 +2,26 @@
 
 require_once __DIR__ . "/init.php";
 
+if (!$conn) {
+    die("Connection failed.");
+}
+
 $login = "NULL";
 
 $sql = "SELECT `login`, `session_id` FROM `session`";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-$stmt->close();
+$result = $conn->query($sql);
 
-while($row = $result->fetch_assoc()) {
-    if($row["session_id"] == $ssid) {
+if (!$result) {
+    die("Query failed: " . $conn->error);
+}
+
+while ($row = $result->fetch_assoc()) {
+    if ($row["session_id"] === $ssid) {
         $login = $row["login"];
+        break; // Found match, no need to loop more
     }
 }
+
+$result->free();
 
 return $login;

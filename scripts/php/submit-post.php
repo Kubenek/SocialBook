@@ -24,3 +24,5 @@ if ($stmt->execute()) {
 } else {
     echo "Error: " . $stmt->error;
 }
+
+$stmt->close();

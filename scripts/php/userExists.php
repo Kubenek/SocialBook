@@ -10,4 +10,6 @@ while($row = $result->fetch_assoc()) {
     }
 }
 
+$result->free();
+
 return false;

@@ -15,6 +15,8 @@ while($row = $result->fetch_assoc()) {
     }
 }
 
+$stmt->close();
+
 
 if(basename($_SERVER['PHP_SELF']) === "feed.php" || basename($_SERVER['PHP_SELF']) === "inbox.php" || basename($_SERVER['PHP_SELF']) === "settings.php" || basename($_SERVER['PHP_SELF']) === "notify.php" || basename($_SERVER['PHP_SELF']) === "search.php") {
     if(!$exists) {

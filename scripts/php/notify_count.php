@@ -10,6 +10,8 @@ $stmt->bind_param("i", $lID);
 $stmt->execute();
 $result = $stmt->get_result();
 
+$stmt->close();
+
 $count = $result->num_rows;
 
 return $count;

@@ -13,7 +13,7 @@ while($row = $result->fetch_assoc()) {
     $posts[] = $row;
 }
 
-$stmt->execute();
+$stmt->close();
 
 
 return $posts;
