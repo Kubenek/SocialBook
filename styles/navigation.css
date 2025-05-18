@@ -11,7 +11,7 @@
     background-color: var(--primary-color);
     color: #fff;
 }
-body.dark{
+html.dark body{
     --body-color: #18191a;
     --sidebar-color: #242526;
     --primary-color: #3a3b3c;
@@ -116,7 +116,7 @@ header .image-text .profession{
     font-size: 22px;
     cursor: pointer;
 }
-body.dark .sidebar header .toggle{
+html.dark body .sidebar header .toggle{
     color: var(--text-color);
 }
 .sidebar.close .toggle{
@@ -159,8 +159,8 @@ body.dark .sidebar header .toggle{
 .sidebar li a:hover .text{
     color: var(--sidebar-color);
 }
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
+html.dark body .sidebar li a:hover .icon,
+html.dark body .sidebar li a:hover .text{
     color: var(--text-color);
 }
 .sidebar .menu-bar{
@@ -188,10 +188,10 @@ body.dark .sidebar li a:hover .text{
 .mode .sun-moon i.sun{
     opacity: 0;
 }
-body.dark .mode .sun-moon i.sun{
+html.dark body .mode .sun-moon i.sun{
     opacity: 1;
 }
-body.dark .mode .sun-moon i.moon{
+html.dark body .mode .sun-moon i.moon{
     opacity: 0;
 }
 .menu-bar .bottom-content .toggle-switch{
@@ -223,7 +223,7 @@ body.dark .mode .sun-moon i.moon{
     transform: translateY(-50%);
     background-color: var(--sidebar-color);
 }
-body.dark .switch::before{
+html.dark body .switch::before{
     left: 20px;
 }
 .home{
@@ -246,7 +246,7 @@ body.dark .switch::before{
     height: 100vh;
     width: calc(100% - 78px);
 }
-body.dark .home .text{
+html.dark body .home .text{
     color: var(--text-color);
 }
 
@@ -258,8 +258,8 @@ body.dark .home .text{
     color: var(--sidebar-color);
 }
 
-body.dark .sidebar li a.active .icon,
-body.dark .sidebar li a.active .text{
+html.dark body .sidebar li a.active .icon,
+html.dark body .sidebar li a.active .text{
     color: var(--text-color);
 }
 

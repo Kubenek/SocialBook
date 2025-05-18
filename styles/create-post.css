@@ -1,7 +1,7 @@
 @import url('variables.css');
 @import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
 
-body.dark {
+html.dark body {
     --primary-feed-color: #242526;
     --primary-text-color: #fff;
     --toggle-color: #18191a;

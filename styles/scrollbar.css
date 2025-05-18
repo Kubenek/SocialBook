@@ -1,6 +1,6 @@
 @import url('variables.css');
 
-body.dark {
+html.dark body {
     --scrollbar-color: #3a3b3c;
 }
 

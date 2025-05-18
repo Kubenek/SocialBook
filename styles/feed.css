@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-body.dark {
+html.dark body {
     --primary-feed-color: #242526;
     --primary-text-color: #fff;
 }

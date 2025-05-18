@@ -8,15 +8,7 @@ if (
     !(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
 ) {
     echo '<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const body = document.querySelector("body");
-            const modeText = body.querySelector(".mode-text");
-
-            body.classList.add("dark");
-            if (modeText) {
-                modeText.innerText = "Light mode";
-            }
-        });
+        document.documentElement.classList.add("dark");
     </script>';
 } elseif (!isset($_SESSION['dark_status'])) {
     $_SESSION['dark_status'] = 0;

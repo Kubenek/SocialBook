@@ -1,6 +1,6 @@
 @import url('variables.css');
 
-body.dark {
+html.dark body {
     --dropdown-bg: #18191a;
     --dropdown-item-hover: #3a3b3c;
 }
