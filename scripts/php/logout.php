@@ -17,7 +17,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $ssid);
 $stmt->execute();
 $stmt->close();
-header("Location: login.php");
+header("Location: ".__DIR__."/../../login.php");
 
 
 session_destroy();
