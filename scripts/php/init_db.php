@@ -10,6 +10,8 @@ if(!isset($_ENV['DB_HOST'])) {
 
 require_once __DIR__ . '/fetch_database_connection.php';
 
+$conn = loadConn();
+
 // SESSION TABLE
 $conn->query("CREATE TABLE IF NOT EXISTS session (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
