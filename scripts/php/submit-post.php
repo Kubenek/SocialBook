@@ -20,7 +20,7 @@ $content = $_POST['content'];
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssi", $title, $content, $userId);
 if ($stmt->execute()) {
-    header("Location: /SocialBook/feed.php");
+    header("Location: feed.php");
 } else {
     echo "Error: " . $stmt->error;
 }

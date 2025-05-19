@@ -17,7 +17,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $ssid);
 $stmt->execute();
 $stmt->close();
-header("Location: /SocialBook/login.php");
+header("Location: login.php");
 
 
 session_destroy();
