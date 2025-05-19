@@ -2,8 +2,6 @@
 
 require_once __DIR__ . "/scripts/php/init.php";
 
-include("scripts/php/auto_redirect.php");
-
 ?>
 
 <!DOCTYPE html>

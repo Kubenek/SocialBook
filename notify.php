@@ -1,7 +1,5 @@
 <?php
 
-include("scripts/php/auto_redirect.php");
-
 require_once __DIR__ . "/scripts/php/init.php";
 
 $login = include("scripts/php/fetch_login.php");
@@ -38,6 +36,7 @@ function fetch_login_by_id($conn, $id) {
     <link href="styles/notify.css" rel="stylesheet">
 
     <script src="scripts/readAllAJAX.js" defer></script>
+    <script src="scripts/redirectAJAX.js" defer></script>
  
     <?php include('UI/navigation/navigation-imports.php'); ?>
 

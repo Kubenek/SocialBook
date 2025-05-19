@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . "/init.php";
-
 $sql = "SELECT `session_id` FROM `session`";
 $stmt = $conn->prepare($sql);
 $stmt->execute();

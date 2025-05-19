@@ -2,7 +2,6 @@
 
 require_once __DIR__ . "/scripts/php/init.php";
 
-include("scripts/php/auto_redirect.php");
 include("scripts/php/darkmode_init.php");
 $posts = include("scripts/php/fetch_posts.php");
 shuffle($posts);
@@ -87,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['like_post'])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/toggle-like-icon.js" defer></script>
+    <script src="scripts/redirectAJAX.js" defer></script>
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
     

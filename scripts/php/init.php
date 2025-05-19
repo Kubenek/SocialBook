@@ -17,3 +17,5 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $ssid = session_id();
+
+require_once __DIR__ . '/auto_redirect.php';

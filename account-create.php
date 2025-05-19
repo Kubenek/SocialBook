@@ -2,17 +2,6 @@
 
 require_once __DIR__ . "/scripts/php/init.php";
 
-$sql = "SELECT `session_id` FROM `session`";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-
-while($row = $result->fetch_assoc()) {
-    if($row["session_id"] == $ssid) {
-        header("Location: feed.php");
-    }
-}
-
 ?>
 
 <!DOCTYPE html>

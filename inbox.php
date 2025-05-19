@@ -4,7 +4,6 @@ require_once __DIR__ . "/scripts/php/init.php";
 
 $login = include "scripts/php/fetch_login.php";
 
-include("scripts/php/auto_redirect.php");
 include("scripts/php/darkmode_init.php");
 
 ?>
@@ -22,6 +21,7 @@ include("scripts/php/darkmode_init.php");
     <link href="styles/inbox.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts/redirectAJAX.js" defer></script>
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
 

@@ -28,6 +28,7 @@ include("scripts/php/darkmode_init.php");
     <script src="scripts/dropdown.js" defer></script>
     <script src="scripts/char_counter.js" defer></script>
     <script src="scripts/save_changes.js" defer></script>
+    <script src="scripts/redirectAJAX.js" defer></script>
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
 

@@ -26,6 +26,7 @@ include("scripts/php/darkmode_init.php");
     <link href="styles/seperators.css" rel="stylesheet">
 
     <script src="scripts/searchAJAX.js" defer></script>
+    <script src="scripts/redirectAJAX.js" defer></script>
 
     <?php include('UI/navigation/navigation-imports.php'); ?>
 
