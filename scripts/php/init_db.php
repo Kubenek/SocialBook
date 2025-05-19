@@ -1,6 +1,14 @@
 <?php
 
-require_once __DIR__ . "/init.php";
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Dotenv\Dotenv;
+
+if(!isset($_ENV['DB_HOST'])) {
+    $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+    $dotenv->load();
+}
+
+require_once __DIR__ . '/fetch_database_connection.php';
 
 // SESSION TABLE
 $conn->query("CREATE TABLE IF NOT EXISTS session (
