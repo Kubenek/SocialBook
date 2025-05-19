@@ -4,7 +4,7 @@ require_once __DIR__ . "/init.php";
 
 $login = include("scripts/php/fetch_login.php");
 
-$bio = "";
+$bio = "No information";
 
 $sql = "SELECT `bio` FROM `users` WHERE `login` = '$login'";
 $stmt = $conn->prepare($sql);
