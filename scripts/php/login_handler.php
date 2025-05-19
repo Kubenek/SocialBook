@@ -22,9 +22,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                 $found = true;
                 if(password_verify($pass, $row['password'])) {
 
-                    $sql = "DELETE FROM `session`";
-                    $conn->query($sql);
-
                     $sql = "INSERT INTO `session` (`id`, `session_id`, `login`) VALUES (NULL,?,?);";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("ss", $ssid, $login);
