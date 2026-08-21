@@ -1,3 +1,5 @@
+# Project currently put on hiatus
+
 # SocialBook Documentation
 
 SocialBook is a social media-inspired web application built using modern web technologies including HTML, CSS, JavaScript (AJAX), PHP, JSON, and SQL.
